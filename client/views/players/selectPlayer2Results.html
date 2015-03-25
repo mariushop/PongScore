@@ -1,0 +1,18 @@
+<template name="selectPlayer2Results">
+	<div class="list-group">
+		<div id="search-meta">
+      {{#if isLoading}}
+        <p class="text-muted">searching...</p>
+      {{/if}}
+    </div>
+  	<div class="list-group">
+    	{{#each players}}
+      <a class="list-group-item player-item {{selected}}" href="">
+        <img src="{{photo}}" class="img-rounded pull-left"/>
+        <h4 class="list-group-item-heading">{{name}}</h4>
+        <p class="list-group-item-text">{{score}} points</p>
+      </a>
+      {{/each}}	
+    </div>
+  </div>
+</template>

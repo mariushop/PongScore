@@ -1,0 +1,31 @@
+<template name="administrative">
+  <h2>Users status</h2>
+  <table class="table table-responsive table-bordered table-striped">
+  	<thead>
+  		<tr>
+  			<th>Name</th>
+  			<th>Last login date</th>
+  			<th>IP address</th>
+  			<th>Browser</th>
+  			<th>Idle?</th>
+  			<th>Last activity</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	  {{#each logged}}
+	  		<tr>
+	  			<td>{{profile.name}}</td>
+	  			<td>{{status.lastLogin.date}}</td>
+	  			<td>{{status.lastLogin.ipAddr}}</td>
+	  			<td>{{status.lastLogin.userAgent}}</td>
+	  			<td>
+	  				{{#if idle}}
+	  					Yes
+	  				{{/if}}
+	  			</td>
+	  			<td>{{lastActivity}}</td>
+	  		</tr>
+	  	{{/each}}
+  	</tbody>
+  </table>
+</template>

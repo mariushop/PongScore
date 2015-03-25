@@ -1,0 +1,19 @@
+{
+    "facebook" : {
+        "clientId": "",
+        "secret": ""
+    },
+    "twitter" : {
+        "clientId": "",
+        "secret": ""
+    },
+    "google" : {
+        "clientId": "",
+        "secret": ""
+    },
+    "public":{
+        "disqus":{
+            "shortname":""
+        }
+    }
+}

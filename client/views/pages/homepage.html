@@ -1,0 +1,29 @@
+<template name="homepage">
+	<div class="row">
+		<div class="col-md-3">
+			{{> topPlayers}}
+		</div>
+		<div class="col-md-6">
+			{{> lastMatches}}
+		</div>
+		<div class="col-md-3">
+    {{#if currentUser}}
+      {{> lastEvents}}
+      {{> advertising}}
+    {{else}}
+			<h4>Join us now!</h4>
+			<div class="jumbotron">
+				<div class="jumbotron-text-container text-center">
+        	<p>See how you measure up to other ping-pong players.</p>
+        	<a href="{{pathFor 'signup'}}" class="btn btn-success" id="start_now">New account</a>
+     	 	</div>
+      </div>	
+      <p class="text-center"> or use one-click social accounts</p>
+      <br>
+      <button class="btn btn-primary btn-block" id="login_with_facebook"> Sign in with Facebook </button>
+      <button class="btn btn-danger btn-block" id="login_with_google"> Sign in with Google </button>
+      <button class="btn btn-default btn-block" id="login_with_twitter"> Sign in with Twitter </button>
+      {{/if}}
+    </div>
+	</div>
+</template>

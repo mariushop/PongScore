@@ -1,0 +1,61 @@
+<template name="notifications">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	  {{#if notificationCount}}
+	   	<i class="fa fa-bell notifications"></i> <span class="notifications">{{notificationCount}}</span>
+	   	<b class="caret"></b>
+	  {{else}}
+	  	<i class="fa fa-bell-o"></i>
+	  {{/if}}
+  </a>
+  <ul class="notification dropdown-menu">
+    {{#if notificationCount}}
+      {{#each notifications}}
+        {{> notificationItem}}
+      {{/each}}
+    {{else}}
+      <li>
+				<div class="message">
+				  <div class="media">
+				    <div class="media-left">
+				      <a href="#">
+				        <i class="fa fa-ban text-primary"></i>
+				      </a>
+				    </div>
+				    <div class="media-body">
+				      <p class="notification-text">
+				        No notifications yet. <br>
+				        <small>Players recieve notifications when they need to confirm a match. Go play one and log it with <b>Log a match</b>.</small>
+				       </p>
+				    </div>
+				  </div>
+				</div>
+      </li>
+    {{/if}}
+  </ul>
+</template>
+
+<template name="notificationItem">
+  <li>
+    <a href="{{pathFor 'match' _id=link}}">
+			<div class="message">
+			  <div class="media">
+			    <div class="media-left">
+			      <a href="#">
+		          <span class="fa-stack fa-lg">
+		            <i class="fa fa-circle fa-stack-2x"></i>
+		            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+		          </span>
+			      </a>
+			    </div>
+			    <div class="media-body">
+			      <h6 class="media-heading">{{title}}</h6>
+			      <p class="notification-text">
+			        {{content}}
+			      </p>
+			      <span class='pull-right text-muted message-date'><small>{{notificationDate createdAt}}</small></span>
+			    </div>
+			  </div>
+			</div>
+    </a>
+  </li>
+</template>

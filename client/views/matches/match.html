@@ -1,0 +1,210 @@
+<template name="match">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+	  		<a href="{{pathFor 'matches'}}" class="btn btn-default"><i class="fa fa-list"></i>All matches</a>
+	  		<br>
+	  		<br>
+	  	</div>
+	  </div> 
+	  <div class="row"> 
+		  {{#with match}}
+			  <div class="row">
+					<div class="col-sm-4">
+						{{#with player1}}
+				  		<div class="col-sm-12">
+					  	 	<div class="panel panel-default" id="player_card">
+								  <div class="panel-heading clearfix">
+								    <h3 class="panel-title pull-left">Player card</h3>
+								  </div>
+								    <div class="panel panel-body">
+								    	<div class="row">
+									    	<div class="col-sm-3">
+											    <a href="#">
+											      <img src="{{photo}}" class="img-rounded img-responsive"/>
+											    </a>
+											    <br>
+											  </div>
+											  <div class="col-sm-9">
+											    <div class="list-group">
+											      <div class="list-group-item">
+											        <p class="list-group-item-text">Name</p>
+											        <h4 class="list-group-item-heading">{{name}}</h4>
+											      </div>
+											      <div class="list-group-item tooltipable" title="(All games won - All games lost)">
+											        <p class="list-group-item-text">Score</p>
+											        <h4 class="list-group-item-heading">{{score}} <small>points</small></h4>
+											      </div>
+											      <div class="list-group-item tooltipable" title="Only matches where both players confirmed">
+											      	<p class="list-group-item-text">Matches</p>
+											        <h5 class="list-group-item-heading">{{matchesPlayed}} <small>played</small>  {{matchesWon}} <small>won</small>  {{matchesLost}} <small>lost</small>  {{matchesDraw}} <small>draw</small>  </h5>
+											      </div>
+											      <div class="list-group-item tooltipable" title="All points in confirmed matches">
+											      	<p class="list-group-item-text" >Games</p>
+											        <h5 class="list-group-item-heading">{{gamesPlayed}} <small>played</small>  {{gamesWon}} <small>won</small>  {{gamesLost}} <small>lost</small> </h5>
+											      </div>
+											      <div class="list-group-item tooltipable" title="Duration of all matches played">
+											      	<p class="list-group-item-text">Total time played</p>
+											        <h5 class="list-group-item-heading">{{timePlayed}} <small>seconds</small></h5>
+											      </div>
+											    </div>
+											  </div>
+											</div>
+										</div>
+									  <div class="panel-footer">
+									  	<span class="pull-left">
+									  	</span>
+									  </div>
+									</div>
+								</div>
+								
+						{{/with}}
+					</div><!-- /div col-sm-5 -->
+					<div class="col-sm-4"> 
+						<div class="row">
+							<div class="col-sm-5 text-center">
+								<span class="points-in-match-big">{{player1.points}}</span>
+							</div>
+							<div class="col-sm-2 text-center">
+								<p class="score-divider-big text-center">-</p>
+							</div>
+							<div class="col-sm-5 text-center">
+								<span class="points-in-match-big">{{player2.points}}</span>
+							</div>
+						</div>
+						<div class="row">
+							<h4>&nbsp;</h4>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h3> <i class="fa fa-clock-o"></i> {{duration}}</h3>
+								<h5> <i class="fa fa-calendar-o"></i> {{matchDate}}</h5>
+							</div>
+						</div>
+						<div class="row">
+							<h4>&nbsp;</h4>
+						</div>
+						<div class="row">
+							<div class="col-md-6 text-center">
+								<b>{{player1.name}}</b>
+								{{#if player1.confirmedScore}}
+                  <b><span class="text-success" id="player1">confirmed</span></b> this match
+                  {{#if userIsPlayer player1._id}}
+                  	<br>
+                		<button class="btn btn-danger btn-xs deny" id="player1">Deny</button>
+                	{{/if}}
+                {{/if}}
+                {{#if player1.deniedScore}}
+                  <b><span class="text-danger" id="player1">denied</span></b> this match
+                  {{#if userIsPlayer player1._id}}
+                  	<br>
+                		<button class="btn btn-success btn-xs confirm" id="player1">Confirm </button>
+                	{{/if}}
+                {{/if}}
+                {{#if notConfirmedOrDenied  player1.confirmedScore  player1.deniedScore}}
+                	<span> has not yet confirmed this match</span>
+                	{{#if userIsPlayer player1._id}}
+                		<br>
+                		<button class="btn btn-success btn-xs confirm" id="player1">Confirm </button>
+                		<button class="btn btn-danger btn-xs deny" id="player1">Deny</button>
+                	{{/if}}
+                {{/if}}
+							</div>
+							<div class="col-md-6 text-center">
+								<b>{{player2.name}}</b>
+								{{#if player2.confirmedScore}}
+                  <b><span class="text-success" id="player2">confirmed</span></b> this match
+                  {{#if userIsPlayer player2._id}}
+                		<br>
+                		<button class="btn btn-danger btn-xs deny" id="player2">Deny</button>
+                	{{/if}}
+                {{/if}}
+                {{#if player2.deniedScore}}
+                  <b><span class="text-danger" id="player2">denied</span></b> this match
+                  {{#if userIsPlayer player2._id}}
+                		<br>
+                		<button class="btn btn-success btn-xs confirm" id="player2">Confirm </button>
+                	{{/if}}
+                {{/if}}
+                {{#if notConfirmedOrDenied  player2.confirmedScore  player2.deniedScore}}
+                	<span> has not yet confirmed this match</span>
+                	{{#if userIsPlayer player2._id}}
+                		<br>
+                		<button class="btn btn-success btn-xs confirm" id="player2">Confirm </button>
+                		<button class="btn btn-danger btn-xs deny" id="player2">Deny</button>
+                	{{/if}}
+                {{/if}}
+							</div>
+						</div>
+						<div class="row">
+							<h4 class="text-center">&nbsp;</h4>
+						</div>
+						<div class="row">
+							<p class="text-center texh muted">Logged {{loggedTime}},  
+							{{#if createdById}}
+								by <a href="{{pathFor 'player' _id=createdById}}">{{createdByName}}</a>	
+							{{else}}
+								by {{createdByName}}
+							{{/if}}
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						{{#with player2}}
+			  		<div class="col-sm-12">
+				  	 	<div class="panel panel-default" id="player_card">
+							  <div class="panel-heading clearfix">
+							    <h3 class="panel-title pull-left">Player card</h3>
+							  </div>
+							    <div class="panel panel-body">
+							    	<div class="row">
+								    	<div class="col-sm-3">
+										    <a href="#">
+										      <img src="{{photo}}" class="img-rounded img-responsive"/>
+										    </a>
+										    <br>
+										  </div>
+										  <div class="col-sm-9">
+										    <div class="list-group">
+										      <div class="list-group-item">
+										        <p class="list-group-item-text">Name</p>
+										        <h4 class="list-group-item-heading">{{name}}</h4>
+										      </div>
+										      <div class="list-group-item tooltipable" title="(All games won - All games lost)">
+										        <p class="list-group-item-text">Score</p>
+										        <h4 class="list-group-item-heading">{{score}} <small>points</small></h4>
+										      </div>
+										      <div class="list-group-item tooltipable" title="Only matches where both players confirmed">
+										      	<p class="list-group-item-text">Matches</p>
+										        <h5 class="list-group-item-heading">{{matchesPlayed}} <small>played</small>  {{matchesWon}} <small>won</small>  {{matchesLost}} <small>lost</small>  {{matchesDraw}} <small>draw</small>  </h5>
+										      </div>
+										      <div class="list-group-item tooltipable" title="All points in confirmed matches">
+										      	<p class="list-group-item-text" >Games</p>
+										        <h5 class="list-group-item-heading">{{gamesPlayed}} <small>played</small>  {{gamesWon}} <small>won</small>  {{gamesLost}} <small>lost</small> </h5>
+										      </div>
+										      <div class="list-group-item tooltipable" title="Duration of all matches played">
+										      	<p class="list-group-item-text">Total time played</p>
+										        <h5 class="list-group-item-heading">{{timePlayed}} <small>seconds</small></h5>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+									</div>
+								  <div class="panel-footer">
+								  	<span class="pull-left">
+								  	</span>
+								  </div>
+								</div>
+							</div>
+						{{/with}}
+					</div><!-- /div col-sm-5 -->
+				</div>
+			{{/with}}
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{{>disqus}}
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,127 @@
+<template name="log">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2>Ready. Set. Match.</h2>
+			<br>
+			<br>
+		</div>
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading clearfix">
+			    <h3 class="panel-title pull-left">Player 1</h3>
+			  </div>
+		    <div class="panel panel-body">
+		    	{{#if match.player1}}
+			    	{{#with match.player1}}
+				    	<div class="row">
+					    	<div class="col-sm-3">
+							    <a href="#">
+							      <img src="{{photo}}" class="img-rounded img-responsive"/>
+							    </a>
+							    <br>
+							  </div>
+							  <div class="col-sm-9">
+							    <div class="list-group">
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Name</p>
+							        <h4 class="list-group-item-heading">{{name}}</h4>
+							      </div>
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Score</p>
+							        <h4 class="list-group-item-heading">{{score}} <small>points</small></h4>
+							      </div>
+							      <br>
+							      <a href="#" id="change_player_1" class="btn btn-primary btn-block"><i class="fa fa-exchange"></i> Change player</a>
+							    </div>
+							  </div>
+							  <div class="score text-center">
+							  	<h1>{{points}}</h1>
+							  </div>
+							 
+							  <div class="col-sm-6">
+							  <br>
+							  	<button class="btn btn-lg btn-success btn-block" id="player_1_won"> <i class="fa fa-plus"></i> ONE POINT</button>
+						  	</div>
+						  	<div class="col-sm-6">
+						  	<br>
+							  	<button class="btn btn-lg btn-danger btn-block" id="player_1_lost" {{ pointsFlat points }} > <i class="fa fa-minus"></i> ONE POINT</button>
+							  </div>
+							</div>
+					  {{/with}}
+				  {{else}}
+					  <div class="" id="search_player_1">
+					  	<h4>Please select player 1</h4>
+					  	{{> selectPlayer1SearchBox}}
+					    {{> selectPlayer1Results}}
+						</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<br>
+			<br>
+			<br>
+			<br>
+			<p class="text-muted text-center"><small>Add one point for every won game.</small></p>
+			<br>
+			<br>
+			<button class="btn btn-warning btn-lg btn-block" id="finish_match">Finish</button>
+		</div>
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+			  <div class="panel-heading clearfix">
+			    <h3 class="panel-title pull-left">Player 2</h3>
+			  </div>
+		    <div class="panel panel-body">
+		    {{#if match.player2}}
+			    	{{#with match.player2}}
+				    	<div class="row">
+					    	<div class="col-sm-3">
+							    <a href="#">
+							      <img src="{{photo}}" class="img-rounded img-responsive"/>
+							    </a>
+							    <br>
+							  </div>
+							  <div class="col-sm-9">
+							    <div class="list-group">
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Name</p>
+							        <h4 class="list-group-item-heading">{{name}}</h4>
+							      </div>
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Score</p>
+							        <h4 class="list-group-item-heading">{{score}} <small>points</small></h4>
+							      </div>
+							      <br>
+							      <a href="#" id="change_player_2" class="btn btn-primary btn-block"><i class="fa fa-exchange"></i> Change player</a>
+							    </div>
+							  </div>
+							  <div class="score text-center">
+							  	<h1>{{points}}</h1>
+							  </div>
+							  <div class="col-sm-6">
+							  	<br>
+							  	<button class="btn btn-lg btn-success btn-block" id="player_2_won"> <i class="fa fa-plus"></i> ONE POINT</button>
+						  	</div>
+						  	<div class="col-sm-6">
+									<br>
+							  	<button class="btn btn-lg btn-danger btn-block" id="player_2_lost" {{ pointsFlat points }}> <i class="fa fa-minus"></i> ONE POINT</button>
+							  </div>
+							</div>
+					  {{/with}}
+				  {{else}}
+					  <div class="" id="search_player_2">
+					  	<h4>Please select player 2</h4>
+					  	{{> selectPlayer2SearchBox}}
+					    {{> selectPlayer2Results}}
+						</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{#if currentUser}}
+		{{setSession}}
+	{{/if}}
+</template>

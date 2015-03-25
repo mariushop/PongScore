@@ -1,0 +1,57 @@
+<template name="lastMatches">
+	<h4>Last Matches</h4>
+  <div class="bootcards-list">
+		  <div class="panel panel-default">
+		    <div class="list-group">
+		    	 {{#each matches}}
+		        <a class="list-group-item" href="{{pathFor 'match'}}">
+		          <div class="row">
+		            <div class="col-sm-6">
+		              <div class="pull-left">
+		                <img src="{{player1.photo}}" class="img-rounded"/>
+		              </div>
+		              <div class="pull-right">
+		                <span class="points-in-match pull-left">{{player1.points}}</span>
+		              </div>
+		              <div class="pull-right text-right">
+		                 <h5 class="list-group-item-heading">{{player1.name}}</h5>
+		                <small>
+		                  {{#if player1.confirmedScore}}
+		                    <b><span class="text-success"> confirmed</span></b> the score. 
+		                  {{/if}}
+		                  {{#if player1.deniedScore}}
+		                    <b><span class="text-warning">denied</span></b> the score.
+		                  {{/if}}
+		                </small>
+		              </div>
+		             
+		            </div>
+		            <div class="col-sm-6">
+		              <div class="pull-left">
+		                <span class="points-in-match pull-left">{{player2.points}}</span>
+	                </div>
+	                <div class="pull-right">
+	                  <img src="{{player2.photo}}" class="img-rounded"/>
+	                </div>
+	                <h5 class="list-group-item-heading">{{player2.name}}</h5>
+	                <small>
+	                  {{#if player2.confirmedScore}}
+	                    <b><span class="text-success"> confirmed</span></b> the score. 
+	                  {{/if}}
+	                  {{#if player2.deniedScore}}
+	                    <b><span class="text-warning">denied</span></b> the score.
+	                  {{/if}}
+	                </small>
+		            </div>
+		          </div>
+		        </a>
+		      {{/each}}
+		      <a class="list-group-item clearfix" href="{{pathFor 'matches'}}">
+		      <span class="text-primary">
+		      	see all matches
+		      </span>
+		      </a>
+		    </div>
+		  </div>
+    </div>
+</template>

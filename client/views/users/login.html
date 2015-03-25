@@ -1,0 +1,44 @@
+<template name="login">
+  <div class="row">
+    <div class="col-md-12 text-center">
+     <h3>Login.</h3>
+      <p>This is where all begins.</p>
+      <br>
+      <br>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="col-sm-6">
+        <form class="form" id="login_form">
+          <div class="form-group">
+            <label for="username"> Email <span class="required">*</span></label>
+            <input class="form-control" name="email" id="email" type="text" value="" placeholder="your email address" />
+          </div>
+          <div class="form-group">
+            <label for="password"> Password<span class="required">*</span></label>
+            <input class="form-control" name="password" id="password" type="password" value="" placeholder="password" />
+          </div>
+          <div class="form-group">
+              <a href="{{pathFor 'forgot'}}">Forgot password?</a>
+              <button type="submit" class="btn pull-right btn-primary">Login</button> 
+          </div>
+        </form>
+        <p class="text-muted"><small>Every field marked with <span class="required">*</span> is required.</small></p>
+      </div>
+      <div class="divider-vertical"></div>
+      <div class="col-sm-5">
+        <label for="username"> or use social logins </label>
+        <button class="btn btn-primary btn-block" id="login_with_facebook"> Login with Facebook </button>
+        <button class="btn btn-danger btn-block" id="login_with_google"> Login with Google </button>
+        <button class="btn btn-default btn-block" id="login_with_twitter"> Login with Twitter </button>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+      <div class="form-group text-center">
+        <h4>&nbsp;</h4>
+        <h4> Not registerd yet? <br><small> Signup now, it makes us happy!</small></h4>
+        <a href="{{pathFor 'signup'}}" class="btn btn-success">Signup</a>
+      </div>
+    </div>
+  </div>
+</template>

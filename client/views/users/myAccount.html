@@ -1,0 +1,109 @@
+<template name="myAccount">
+	<div class="container">
+	  <div class="row">
+	  	<div class="col-md-6">
+			  {{#with player}}
+					<div class="panel panel-default">
+					  <div class="panel-heading clearfix">
+					    <h3 class="panel-title pull-left">Player card</h3>
+					    {{#if isCurrentUser}}
+						    <a class="pull-right" href="#">
+					        <i class="fa fa-pencil"></i>
+					        Edit your card
+					      </a>
+					     {{ /if }}
+					  </div>
+				    <div class="panel panel-body">
+				    	<div class="row">
+					    	<div class="col-sm-3">
+							    <a href="#">
+							      <img src="/images/{{photo}}" class="img-rounded img-responsive"/>
+							    </a>
+							    <br>
+							  </div>
+							  <div class="col-sm-9">
+							    <div class="list-group">
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Name</p>
+							        <h4 class="list-group-item-heading">{{name}}</h4>
+							      </div>
+							      <div class="list-group-item">
+							        <p class="list-group-item-text">Score</p>
+							        <h4 class="list-group-item-heading">{{score}} points</h4>
+							      </div>
+							      <div class="list-group-item">
+							      	 <p class="list-group-item-text">About</p>
+							        <p class="list-group-item-text">{{about}}</p>
+							      </div>
+							    </div>
+							  </div>
+							 </div>
+						  <div class='col-sm-12'>
+						  {{#if isNotCurentUser}}
+						    	<a class="btn btn-success btn-block" href="#">Chalenge {{name}} to a game </a>
+						    {{ /if }}
+						  </div>
+						</div>
+					  <div class="panel-footer">
+					  	<span class="pull-left">
+					  		<small>Member since 20 Jan 2015</small>
+					  	</span>
+					  </div>
+					</div>
+			  {{/with}}
+			</div>
+			<div class="col-md-6">
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="bootcards-list">
+				  <div class="panel panel-default">
+				  	<div class="panel-heading clearfix">
+					    <h3 class="panel-title pull-left">Games played</h3>
+					  </div>
+				    <div class="list-group">
+				    	{{#each games}}
+					      <a class="list-group-item" href="{{pathFor 'game'}}">
+					        <div class="row">
+					          <div class="col-sm-5">
+					          	<img src="/images/{{player1.photo}}" class="img-rounded pull-left"/>
+					            <h4 class="list-group-item-heading">{{player1.name}}</h4>
+					            {{#if player1.winner}}
+					           		<span class="label label-success">Won</span>
+					           	{{else}}
+					           		<span class="label label-danger">Lost</span>
+					            {{/if}}
+					          </div>
+					          <div class="col-sm-2">
+					          	<p>
+					          		<i> vs.</i>
+					          	</p>
+					          </div>
+					          <div class="col-sm-5">
+					          	<img src="/images/{{player2.photo}}" class="img-rounded pull-left"/>
+					            <h4 class="list-group-item-heading">{{player2.name}}</h4>
+					            {{#if player2.winner}}
+					           		<span class="label label-success">Won</span>
+					           	{{else}}
+					           		<span class="label label-danger">Lost</span>
+					            {{/if}}
+					          </div>
+					        </div>
+					      </a>
+				     {{/each}}
+				     {{#if zeroGames}}
+							<a class="list-group-item clearfix" href="#">no games played by {{player.name}} yet :(</a>
+				     {{else}}
+				      <span class="text-primary">
+				      	<a class="list-group-item clearfix" href="#">see more games</a>
+				      </span>
+				      {{/if}}
+				    </div>
+				  </div>
+				</div>
+			</div> <!-- col-md-->
+		</div>
+	</div>
+</template>

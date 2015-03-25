@@ -1,0 +1,16 @@
+<template name="lastEvents">
+	<h4>Events</h4>
+  <div class="bootcards-list">
+	  <div class="panel panel-default">
+	    <div class="list-group">
+	    	{{#each lastEvents}}
+	    	<a class="list-group-item" href="{{pathFor 'match' _id=link}}">
+    			<img src="{{createdByPhoto}}" class="img-rounded pull-left"/>
+	      	<p class="list-group-item-text"><small><strong>{{createdByName}}</strong>  {{text}} </small></p>
+	      	<span class=' text-muted message-date'><small>{{eventDate}}</small></span>
+		    </a>
+	      {{/each}}
+	    </div>
+	  </div>
+   </div>
+</template>

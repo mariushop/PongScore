@@ -1,0 +1,19 @@
+<template name="leaderboard">
+	<h4>Top 50 Players</h4>
+  <div class="bootcards-list">
+		  <div class="panel panel-default">
+		    <div class="list-group">
+		    	{{#each players}}
+			      <a class="list-group-item" href="{{pathFor 'player'}}">
+			        <img src="{{photo}}" class="img-rounded pull-left"/>
+			        <h4 class="list-group-item-heading">{{name}}</h4>
+			        <p class="list-group-item-text">{{score}} points</p>
+			      </a>
+		      {{/each}}
+		      <a class="list-group-item clearfix" href="{{pathFor 'players'}}">
+		      	<span class="text-primary">see all players</span>
+		      </a>
+		    </div>
+		  </div>
+    </div>
+</template>

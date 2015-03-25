@@ -1,0 +1,53 @@
+<template name="players">
+	<h4>Players</h4>
+  <div class="bootcards-list">
+	  <div class="input-group">
+		  <span class="input-group-addon" id="sizing-addon2">
+		  {{#if isLoading}}
+			  <i class="fa fa-cog fa-spin gold"></i>
+			{{else}}
+		 		<i class="fa fa-search"></i>
+		 	{{/if}}
+		  </span>
+		  <input type="text" class="form-control search-box" placeholder="Search players..." autofocus="autofocus" aria-describedby="sizing-addon2">
+		</div>
+	  <br>
+	  <div class="panel panel-default">
+			{{#if searchedText}}
+				<div class="list-group">
+			  	<div class="list-group">
+			    	{{#each playersResults}}
+			      <a class="list-group-item player-item" href="{{pathFor 'player'}}">
+			        <img src="{{photo}}" class="img-rounded pull-left"/>
+			        <h4 class="list-group-item-heading">{{name}}</h4>
+			        <p class="list-group-item-text">{{score}} points</p>
+			      </a>
+			      {{/each}}	
+			    </div>
+			  </div>
+			{{else}}
+		    <div class="list-group">
+		    	{{#each players}}
+			      <a class="list-group-item" href="{{pathFor 'player'}}">
+			        <img src="{{photo}}" class="img-rounded pull-left"/>
+			        <h4 class="list-group-item-heading">{{name}}</h4>
+			        <p class="list-group-item-text">{{score}} points</p>
+			      </a>
+		      {{/each}}
+		      {{#if nextPath}}
+			      <a class="list-group-item clearfix" href="{{nextPath}}">
+			      	<span class="text-primary">Load more </span>
+			      </a>
+			    {{else}}
+			    	{{#unless ready}}
+			        {{> spinner}}
+			      {{/unless}}
+			    {{/if}}
+		    </div>
+			{{/if}}	
+		</div>
+  </div>
+</template>
+
+
+

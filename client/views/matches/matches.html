@@ -1,0 +1,121 @@
+<template name="matches">
+	<h4>Matches</h4>
+  <div class="bootcards-list">
+		<div class="input-group">
+		  <span class="input-group-addon" id="sizing-addon2">
+		  {{#if isLoading}}
+			  <i class="fa fa-cog fa-spin gold"></i>
+			{{else}}
+		 		<i class="fa fa-search"></i>
+		 	{{/if}}
+		  </span>
+		  <input type="text" class="form-control search-box" placeholder="Search matches..." autofocus="autofocus" aria-describedby="sizing-addon2">
+		</div>
+	  <br>
+		<div class="panel panel-default">
+			{{#if searchedText}}
+				<div class="list-group">
+			  	<div class="list-group">
+			    	{{#each matchesResults}}
+				    	<a class="list-group-item" href="{{pathFor 'match'}}">
+			          <div class="row">
+			            <div class="col-sm-6">
+			              <div class="pull-left">
+			                <img src="{{player1.photo}}" class="img-rounded"/>
+			              </div>
+			              <div class="pull-right">
+			                <span class="points-in-match pull-left">{{player1.points}}</span>
+			              </div>
+			              <div class="pull-right text-right">
+			                 <h4 class="list-group-item-heading">{{player1.name}}</h4>
+			                <small>
+			                  {{#if player1.confirmedScore}}
+			                    <b><span class="text-success"> confirmed</span></b> match 
+			                  {{/if}}
+			                  {{#if player1.deniedScore}}
+			                    <b><span class="text-warning">denied</span></b> match
+			                  {{/if}}
+			                </small>
+			              </div>
+			            </div>
+			            <div class="col-sm-6">
+			              <div class="pull-left">
+			                  <span class="points-in-match pull-left">{{player2.points}}</span>
+		                </div>
+		                <div class="pull-right">
+		                  <img src="{{player2.photo}}" class="img-rounded"/>
+		                </div>
+		                <h4 class="list-group-item-heading">{{player2.name}}</h4>
+		                <small>
+		                  {{#if player2.confirmedScore}}
+		                    <b><span class="text-success"> confirmed</span></b> match 
+		                  {{/if}}
+		                  {{#if player2.deniedScore}}
+		                    <b><span class="text-warning">denied</span></b> match
+		                  {{/if}}
+		                </small>
+			            </div>
+			          </div>
+			        </a>
+			      {{/each}}	
+			    </div>
+			  </div>
+			{{else}}
+		    <div class="list-group">
+		    	{{#each matches}}
+			      <a class="list-group-item" href="{{pathFor 'match'}}">
+		          <div class="row">
+		            <div class="col-sm-6">
+		              <div class="pull-left">
+		                <img src="{{player1.photo}}" class="img-rounded"/>
+		              </div>
+		              <div class="pull-right">
+		                <span class="points-in-match pull-left">{{player1.points}}</span>
+		              </div>
+		              <div class="pull-right text-right">
+		                 <h4 class="list-group-item-heading">{{player1.name}}</h4>
+		                <small>
+		                  {{#if player1.confirmedScore}}
+		                    <b><span class="text-success"> confirmed</span></b> match 
+		                  {{/if}}
+		                  {{#if player1.deniedScore}}
+		                    <b><span class="text-warning">denied</span></b> match
+		                  {{/if}}
+		                </small>
+		              </div>
+		            </div>
+		            <div class="col-sm-6">
+		              <div class="pull-left">
+		                  <span class="points-in-match pull-left">{{player2.points}}</span>
+	                </div>
+	                <div class="pull-right">
+	                  <img src="{{player2.photo}}" class="img-rounded"/>
+	                </div>
+	                <h4 class="list-group-item-heading">{{player2.name}}</h4>
+	                <small>
+	                  {{#if player2.confirmedScore}}
+	                    <b><span class="text-success"> confirmed</span></b> match 
+	                  {{/if}}
+	                  {{#if player2.deniedScore}}
+	                    <b><span class="text-warning">denied</span></b> match
+	                  {{/if}}
+	                </small>
+		            </div>
+		          </div>
+		        </a>
+		      {{/each}}
+		      {{#if nextPath}}
+			      <a class="list-group-item clearfix" href="{{nextPath}}">
+			      	<span class="text-primary">Load more </span>
+			      </a>
+			    {{else}}
+			    	{{#unless ready}}
+			        {{> spinner}}
+			      {{/unless}}  
+			    {{/if}}
+		    </div>
+			{{/if}}	
+		</div>
+  </div>
+</template>
+
