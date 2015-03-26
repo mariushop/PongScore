@@ -7,11 +7,11 @@ Note that:
  - the app adds an admin account if there's no users in the database. You can configure the details of this account in server/helpers.js.
 
 ##Packages used:
-accounts-facebook          1.0.4  Login service for Facebook accounts
-accounts-github            1.0.4  Login service for Github accounts
-accounts-google            1.0.4  Login service for Google accounts
-accounts-password          1.1.0  Password support for accounts
-accounts-twitter           1.0.4  Login service for Twitter accounts
+ - accounts-facebook          1.0.4  Login service for Facebook accounts
+ - accounts-github            1.0.4  Login service for Github accounts
+ - accounts-google            1.0.4  Login service for Google accounts
+ - accounts-password          1.1.0  Password support for accounts
+ - accounts-twitter           1.0.4  Login service for Twitter accounts
 alanning:roles             1.2.13  Role-based authorization
 email                      1.0.6  Send email messages
 iron:router                1.0.7  Routing specifically designed for Meteor
